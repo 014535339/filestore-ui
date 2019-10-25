@@ -3,7 +3,7 @@ import {
   HelpBlock,
   FormGroup,
   FormControl,
-  ControlLabel
+  ControlLabel  
 } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import { useFormFields } from "../libs/hooksLib";
@@ -38,9 +38,7 @@ export default function Signup(props) {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    setIsLoading(true);
-
-    setNewUser("test");
+    setIsLoading(true);    
 
     setIsLoading(false);
     var data = {
@@ -51,7 +49,7 @@ export default function Signup(props) {
   }
   var header = {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin' : 'http://localhost:3000'
+      'Access-Control-Allow-Origin' : '*'
   };
   
   const options = {
@@ -62,9 +60,7 @@ export default function Signup(props) {
 
   const request = new Request('http://localhost:8080/api/v1/users', options )
   const response = await fetch(request);  
-
-    props.userHasAuthenticated(true);
-    props.history.push("/");
+  
   
   }
 
@@ -80,10 +76,10 @@ export default function Signup(props) {
   }
   var header = {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin' : 'http://localhost:3000'
+      'Access-Control-Allow-Origin' : '*'
   };
   
-  const options = {
+  const options = {      
       method : 'POST',
       headers: header,
       body: JSON.stringify(data)
@@ -92,8 +88,8 @@ export default function Signup(props) {
   const request = new Request('http://localhost:8080/api/v1/users', options )
   const response = await fetch(request);  
 
-    props.userHasAuthenticated(true);
-    props.history.push("/");
+  //props.userHasAuthenticated(true);
+//props.history.push("/");
   }
 
   function renderConfirmationForm() {
@@ -123,7 +119,7 @@ export default function Signup(props) {
   }
 
   function renderForm() {
-    return (
+    return (      
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="firstname" bsSize="small">
           <ControlLabel>First Name</ControlLabel>
@@ -176,8 +172,8 @@ export default function Signup(props) {
           disabled={!validateForm()}
         >
           Signup
-        </LoaderButton>
-      </form>
+        </LoaderButton>   
+      </form>      
     );
   }
 

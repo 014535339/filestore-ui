@@ -24,7 +24,7 @@ export default function Login(props) {
     }
     var header = {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin' : 'http://localhost:3000'
+        'Access-Control-Allow-Origin' : '*'
     };
     
     const options = {
